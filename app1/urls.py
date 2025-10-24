@@ -16,7 +16,6 @@ from django.urls import include, path
 from . import views
 
 urlpatterns = [
-    # направляє URL з home/' у метод views.home і задає ім'я для цього URL як 'home-view';
     path('home/', views.home, name='home-view'),
     path('book/<str:title>/', views.book, name='book'),
     path('lesson_2/', include('lesson_2.urls')),
