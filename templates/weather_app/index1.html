@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Звіт Про Погоду</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        span {
+            font-weight: normal;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    {% if weather %}
+
+    <h1>Погода для {{ weather.city }}</h1>
+
+    <p>
+        Країна: <span>{{ weather.country }}</span>
+    </p>
+
+    <p>
+        🏠 Населений пункт: <span>{{ weather.city }}</span>
+    </p>
+
+    <p>
+        ⬆ Координати: <span>{{ weather.coords }}</span>
+    </p>
+
+    <p>
+        🌥 Погода: <span>{{ weather.weather_main }} ({{ weather.weather_description }})</span>
+    </p>
+
+    <p>
+        🌡 Температура: <span>{{ weather.temp_celsius|cut:'°C' }}</span>
+    </p>
+
+    {% elif error_message %}
+    <h1 style="color: red;">Помилка</h1>
+    <p style="color: red;">{{ error_message }}</p>
+
+    {% endif %}
+
+</body>
+</html>
